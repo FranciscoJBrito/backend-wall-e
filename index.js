@@ -6,6 +6,7 @@ import postRoutes from './routes/postRoutes.js';
 import dalleRoutes from './routes/dalleRoutes.js';
 
 dotenv.config();
+const PORT = process.env.PORT || 8080
 
 const app = express();
 app.use(cors());
@@ -23,7 +24,7 @@ app.get('/', async (req, res) => {
 const startServer = async () => {
   try {
     connectDB(process.env.MONGODB_URL);
-    app.listen(8080, () => console.log('Servidor corriendo en puerto 8080'));
+    app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
   } catch (error) {
     console.log(error);
   }
