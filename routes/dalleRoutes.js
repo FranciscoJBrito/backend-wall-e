@@ -13,6 +13,8 @@ router.route('/').get((req,res) => {
     res.send('Hola desde Wall-E!')
 }) 
 
+const copyrightError = new Error("El prompt proporcionado infringe políticas de copyright.")
+
 router.route('/').post(async (req, res) => {
     try {
         const { prompt } = req.body;
@@ -28,7 +30,6 @@ router.route('/').post(async (req, res) => {
         res.status(200).json({photo: image});
         
     } catch (error) {
-        console.log(error);
         res.status(500).send(error?.response.data.error.message)
     }
 })
